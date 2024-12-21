@@ -18,5 +18,6 @@
         <mapping class="org.erp.Models.Address"/>
         <mapping class="org.erp.Models.Certificate"/>
         <mapping class="org.erp.Models.Profile"/>
+        <mapping class="org.erp.Models.Course"/>
     </session-factory>
 </hibernate-configuration>
