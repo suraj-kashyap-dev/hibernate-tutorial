@@ -36,6 +36,18 @@ public class Address {
     @Comment(value = "Update At")
     private LocalDateTime updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Address() {
         super();
     }

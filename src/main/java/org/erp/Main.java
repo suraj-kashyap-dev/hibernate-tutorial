@@ -1,5 +1,6 @@
 package org.erp;
 
+import org.erp.Models.Address;
 import org.erp.Models.Certificate;
 import org.erp.Models.Profile;
 import org.erp.Models.Student;
@@ -7,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,6 +19,7 @@ public class Main {
 
         Student student = new Student();
 
+        // Student Details
         student.setMotherName("Mrs. Sukh Devi");
         student.setFatherName("Mr. Ram Kumar");
         student.setPhoneNumber("9315981404");
@@ -24,18 +28,41 @@ public class Main {
 
         Certificate certificate = new Certificate();
 
+        // Certificate Details
         certificate.setCourse("BCA");
         certificate.setDuration("3 Year");
 
         Profile profile = new Profile();
 
+        // Profile Details
         profile.setAvatar("1.jpg");
         profile.setBio("Hello, im software engineer");
         profile.setStudent(student);
 
         student.setProfile(profile);
-
         student.setCertificate(certificate);
+
+        ArrayList<Address> addresses = new ArrayList<>();
+
+        Address address1 = new Address();
+
+        address1.setCity("Noida");
+        address1.setCountry("India");
+        address1.setStree1("Sec 62, ARV PARK");
+        address1.setStreet2("Sec 62, ARV PARK");
+        address1.setStudent(student);
+
+        Address address2 = new Address();
+
+        address2.setCity("Ghazibad");
+        address2.setCountry("India");
+        address2.setStree1("Viojay, ARV PARK");
+        address2.setStreet2("Viojay,, ARV PARK");
+        address2.setStudent(student);
+        addresses.add(address1);
+        addresses.add(address2);
+
+        student.setAddresses(addresses);
 
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();

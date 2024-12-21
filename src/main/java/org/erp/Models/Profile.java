@@ -23,11 +23,9 @@ public class Profile {
     private Student student;
 
     public Profile() {
-        super();
     }
 
     public Profile(int id, String bio, String avatar, Student student) {
-        super();
         this.id = id;
         this.bio = bio;
         this.avatar = avatar;
