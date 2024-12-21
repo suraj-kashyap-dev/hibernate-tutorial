@@ -12,9 +12,31 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Embedded
+    private Certificate certificate;
+
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private Profile profile;
+
+    public Certificate getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(Certificate certificate) {
+        this.certificate = certificate;
+    }
+
     @Column(name = "name", nullable = false, length = 100)
     @Comment(value = "Name")
     private String name;
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }
 
     @Column(name = "email", nullable = true, length = 100)
     @Comment(value = "Email")
@@ -40,20 +62,9 @@ public class Student {
     @Comment(value = "Update At")
     private LocalDateTime updatedAt;
 
-    public Student() {
-        super();
-    }
+    public Student() {}
 
-    public Student(int id, String name, String email, String fatherName, String motherName, String phoneNumber, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.fatherName = fatherName;
-        this.motherName = motherName;
-        this.phoneNumber = phoneNumber;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
+
 
     public int getId() {
         return id;

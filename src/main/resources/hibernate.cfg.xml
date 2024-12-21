@@ -11,10 +11,12 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/erp?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="connection.username">root</property>
         <property name="connection.password">123456</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <mapping class="org.erp.Models.Student"/>
         <mapping class="org.erp.Models.Address"/>
+        <mapping class="org.erp.Models.Certificate"/>
+        <mapping class="org.erp.Models.Profile"/>
     </session-factory>
 </hibernate-configuration>
